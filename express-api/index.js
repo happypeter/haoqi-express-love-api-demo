@@ -4,6 +4,8 @@ const mongoose = require('mongoose')
 const Post = require('./models/post')
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
+const cors = require('cors')
+app.use(cors())
 
 
 
