@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import './App.css'
-import axios from 'axios'
-import Settings from './settings'
+import Header from './Header'
+import Main from './Main'
+import {
+  BrowserRouter as Router
+} from 'react-router-dom'
 
 class App extends Component {
-  componentWillMount() {
-    axios.get(`${Settings.host}/posts`).then(
-      res => console.log(res.data)
-    )
-  }
   render() {
     return (
-      <div className="App">
-        App
-      </div>
+      <Router>
+        <div>
+          <Header />
+          <Main />
+        </div>
+      </Router>
     );
   }
 }
