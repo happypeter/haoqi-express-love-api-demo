@@ -1,0 +1,14 @@
+
+.post-list .button {
+  display: block;
+  margin: 30px auto;
+  width: 120px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background-color: #ff4081;
+  font-size: 1em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 20px
+}
