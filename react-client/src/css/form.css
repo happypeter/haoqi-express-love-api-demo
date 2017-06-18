@@ -51,7 +51,7 @@ button:focus {
   outline: none;
 }
 
-.link {
+form .link {
   display: inline-block;
   margin-left: 15px;
   font-size: 1em;

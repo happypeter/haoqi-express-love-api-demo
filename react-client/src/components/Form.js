@@ -3,10 +3,13 @@ import '../css/form.css'
 import { Link } from 'react-router-dom'
 
 class Form extends Component {
-  handleSubmit = () => {
-    console.log('handleSubmit....')
-    let content = this.textInput.value
-    this.props.publishPost({ content })
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    let category = this.category.value
+    let title = this.title.value
+    let content = this.content.value
+    this.props.publishPost({ category, title, content })
   }
 
   render() {
