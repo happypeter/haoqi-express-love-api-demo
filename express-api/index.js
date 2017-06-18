@@ -14,11 +14,6 @@ mongoose.connect('mongodb://localhost:27017/express-love-api')
 const db = mongoose.connection
 db.on('error', console.log)
 db.once('open', () => {
-  let post = new Post({title: 'mongoose usage'})
-  console.log('save post')
-  post.save(function(err){
-    if(err) console.log(err)
-  })
   console.log('success!')
 })
 
@@ -31,7 +26,7 @@ app.get('/posts', (req, res) => {
 })
 
 app.get('/post/:id', (req, res) => {
-  Post.find({_id: req.params.id}).exec(function(err, post) {
+  Post.findOne({_id: req.params.id}).exec(function(err, post) {
     if (err) return res.status(500).json({error: err.message})
     res.json({ post })
   })

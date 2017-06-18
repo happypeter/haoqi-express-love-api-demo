@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PostList from './PostList'
 import NewPost from './NewPost'
+import ShowPost from './ShowPost'
 
 import {
   Route
@@ -12,6 +13,7 @@ class Main extends Component {
       <div>
         <Route exact path='/' component={PostList} />
         <Route path='/post/new' component={NewPost} />
+        <Route path='/post/:id' component={ShowPost} />
       </div>
     )
   }
