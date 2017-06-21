@@ -13,21 +13,25 @@ class Form extends Component {
   }
 
   render() {
+    const { post } = this.props
     return(
       <form onSubmit={this.handleSubmit}>
         <div>
           <label>分类</label>
           <input
+            defaultValue={post&&post.category}
             ref={(input) => this.category = input }/>
         </div>
         <div>
           <label>标题</label>
           <input
+            defaultValue={post&&post.title}
             ref={(input) => this.title = input }/>
         </div>
         <div>
           <label>内容</label>
           <textarea
+            defaultValue={post&&post.content}
             ref={(input) => this.content = input } rows='20'  />
         </div>
         <div className="actions">

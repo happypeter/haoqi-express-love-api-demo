@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom'
 
 
-
 class PostList extends Component {
 
   constructor(){
@@ -29,14 +28,15 @@ class PostList extends Component {
     )
   }
 
+
   render() {
     const postList = this.state.posts.map( post => (
            <div key={post._id} className="card">
              <div className="title">{post.title}</div>
              <div className="actions">
                <Link className="link" to={`/post/${post._id}`}>查看</Link>
-             <Link className="link" to={`/post/${post._id}/edit`}>编辑</Link>
-               <Link className="link" to='' >删除</Link>
+               <Link className="link" to={`/post/${post._id}/edit`}>编辑</Link>
+               <Link to='' className="link">删除</Link>
              </div>
            </div>
          ))
