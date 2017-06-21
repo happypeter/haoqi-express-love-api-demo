@@ -28,6 +28,26 @@ class PostList extends Component {
     )
   }
 
+  filterPostList = (id) => {
+    let posts = this.state.posts.filter(post => post._id !== id)
+    this.setState({
+      posts
+    })
+  }
+
+  removeServerData = (id) => {
+    axios.delete(`${Settings.host}/post/${id}`).then(
+      res => {
+        console.log(res.data)
+        this.filterPostList(id)
+      }
+    )
+  }
+
+  handleDelete = (id) => {
+    console.log(id)
+    this.removeServerData(id)
+  }
 
   render() {
     const postList = this.state.posts.map( post => (
@@ -36,7 +56,7 @@ class PostList extends Component {
              <div className="actions">
                <Link className="link" to={`/post/${post._id}`}>查看</Link>
                <Link className="link" to={`/post/${post._id}/edit`}>编辑</Link>
-               <Link to='' className="link">删除</Link>
+               <Link to='' className="link" onClick={() => this.handleDelete(post._id)}>删除</Link>
              </div>
            </div>
          ))
