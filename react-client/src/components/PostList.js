@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../css/post-list.css'
 import axios from 'axios'
 import Settings from '../settings'
+import DeletePost from './DeletePost'
 
 import {
   Link
@@ -13,7 +14,8 @@ class PostList extends Component {
   constructor(){
     super()
     this.state = {
-      posts: []
+      posts: [],
+      id: ''
     }
   }
 
@@ -35,18 +37,13 @@ class PostList extends Component {
     })
   }
 
-  removeServerData = (id) => {
-    axios.delete(`${Settings.host}/post/${id}`).then(
-      res => {
-        console.log(res.data)
-        this.filterPostList(id)
-      }
-    )
-  }
 
   handleDelete = (id) => {
     console.log(id)
-    this.removeServerData(id)
+    this.setState({
+      id
+    })
+    this.dialog.open()
   }
 
   render() {
@@ -64,6 +61,7 @@ class PostList extends Component {
       <div className="post-list">
         <Link className="button" to="/post/new">写文章</Link>
         { postList }
+        <DeletePost id={this.state.id} ref={value => this.dialog = value} filterPostList={this.filterPostList}/>
       </div>
     )
   }
